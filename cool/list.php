@@ -1,4 +1,6 @@
 <?php
+require_once("../database.php");
+require_once("../classes.php");
 //step1 
 $area = -1;
 if (isset($_REQUEST["area"])) {

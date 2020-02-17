@@ -1,3 +1,27 @@
+<?php
+require_once("../database.php");
+require_once("../classes.php");
+
+$pdo = connectDatabase();
+
+$sql = "select * from areas";
+
+$pstmt = $pdo->prepare($sql);
+
+$pstmt->execute();
+
+$rs = $pstmt->fetchAll();
+
+$areas = [];
+foreach ($rs as $record) {
+    $id = intval($record["id"]);
+    $name = $record["name"];
+    $area = new Area($id, $name);
+    $areas[] = $area;
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="ja">
 
